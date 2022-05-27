@@ -4,6 +4,12 @@ import PropTypes from 'prop-types';
 import { Container } from './styles';
 
 export default class Header extends Component {
+  static propTypes = {
+    //com static o atributo pertence à classe em si, em vez da instância da classe sem o static
+    selectedTheme: PropTypes.string.isRequired,
+    onToggleTheme: PropTypes.func.isRequired,
+  };
+
   render() {
     const { onToggleTheme, selectedTheme } = this.props;
 
@@ -17,8 +23,3 @@ export default class Header extends Component {
     );
   }
 }
-
-Header.propTypes = {
-  selectedTheme: PropTypes.string.isRequired,
-  onToggleTheme: PropTypes.func.isRequired,
-};
