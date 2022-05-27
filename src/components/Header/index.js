@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { Container } from './styles';
 
@@ -16,3 +17,8 @@ export default class Header extends Component {
     );
   }
 }
+
+Header.propTypes = {
+  selectedTheme: PropTypes.string.isRequired,
+  onToggleTheme: PropTypes.func.isRequired,
+};

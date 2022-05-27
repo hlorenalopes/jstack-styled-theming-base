@@ -12,13 +12,13 @@ class App extends React.Component {
   };
 
   handleToggleTheme = () => {
-    this.forceUpdate();
+    this.setState((prevState) => ({
+      theme: prevState.theme === 'dark' ? 'light' : 'dark',
+    }));
   };
 
   render() {
     const { theme } = this.state;
-
-    console.log('App renderizou');
 
     return (
       <ThemeProvider theme={themes[theme] || themes.dark}>
