@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
 
 import GlobalStyle from './styles/global';
@@ -8,19 +8,17 @@ import themes from './styles/themes';
 
 class App extends React.Component {
   state = {
-    //cria uma propriedade na classe e atribui um valor pra ela
     theme: 'dark',
   };
 
   handleToggleTheme = () => {
-    // quando usa arrow function tá herdando o objeto this de onde a função foi criada, então não precisa do bind
-    this.setState((prevState) => ({
-      theme: prevState.theme === 'dark' ? 'light' : 'dark',
-    }));
+    this.forceUpdate();
   };
 
   render() {
     const { theme } = this.state;
+
+    console.log('App renderizou');
 
     return (
       <ThemeProvider theme={themes[theme] || themes.dark}>
