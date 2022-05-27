@@ -14,6 +14,14 @@ class App extends React.Component {
     this.state = {
       theme: 'dark',
     };
+
+    this.handleToggleTheme = this.handleToggleTheme.bind(this); //tá fazendo com que o this do handleToggleTeam seja o this do construtor que é a classe App
+  }
+
+  handleToggleTheme() {
+    this.setState((prevState) => ({
+      theme: prevState.theme === 'dark' ? 'light' : 'dark',
+    }));
   }
 
   render() {
@@ -22,36 +30,10 @@ class App extends React.Component {
     return (
       <ThemeProvider theme={themes[theme] || themes.dark}>
         <GlobalStyle />
-        <Layout
-          onToggleTheme={() => {
-            this.setState((prevState) => ({
-              theme: prevState.theme === 'dark' ? 'light' : 'dark',
-            })); //faz um merge com o this.state passado no constructor
-          }}
-          selectedTheme={theme}
-        />
+        <Layout onToggleTheme={this.handleToggleTheme} selectedTheme={theme} />
       </ThemeProvider>
     );
   }
 }
-
-// function App() {
-//   const [theme, setTheme] = useState('dark');
-
-//   const currentTheme = useMemo(() => {
-//     return themes[theme] || themes.dark;
-//   }, [theme]);
-
-//   function handleToggleTheme() {
-//     setTheme((prevState) => (prevState === 'dark' ? 'light' : 'dark'));
-//   }
-
-// return (
-//   <ThemeProvider theme={currentTheme}>
-//     <GlobalStyle />
-//     <Layout onToggleTheme={handleToggleTheme} selectedTheme={theme} />
-//   </ThemeProvider>
-// );
-// }
 
 export default App;
