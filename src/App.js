@@ -17,7 +17,7 @@ class App extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log({
+    console.log('componentDidUpdate', {
       currentState: this.state,
       prevState,
       prevProps,
@@ -26,6 +26,16 @@ class App extends React.Component {
 
   componentDidCatch(error, info) {
     console.log('componentDidCatch', { error, info });
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('componentShouldUpdate', {
+      currentState: this.state,
+      nextState,
+      nextProps, // mostra o valor que o componente vai renderizar, e com isso podemos manipular o return pra que dependendo do valor o componente seja renderizado (true) ou não (false)
+    });
+
+    return true;
   }
 
   render() {
