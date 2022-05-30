@@ -8,9 +8,20 @@ import { ThemeProvider, ThemeContext } from './contexts/ThemeContext';
 import themes from './styles/themes';
 
 class App extends React.Component {
+  state = {
+    changed: false,
+  };
+
+  componentDidMount() {
+    console.log('componentDidMount executed');
+  }
+
   render() {
     return (
       <ThemeProvider>
+        <button onClick={() => this.setState({ changed: true })}>
+          Change state
+        </button>
         <ThemeContext.Consumer>
           {({ theme }) => (
             <StyledThemeProvider theme={themes[theme] || themes.dark}>
