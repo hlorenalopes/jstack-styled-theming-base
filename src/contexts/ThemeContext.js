@@ -3,9 +3,20 @@ import React, { createContext, useState } from 'react';
 export const ThemeContext = createContext();
 
 export class ThemeProvider extends React.Component {
-  state = {
-    theme: JSON.parse(localStorage.getItem('theme')), //mantém o estado se atualizar a página, mas aqui não é o melhor lugar pois pode dar erro
-  };
+  constructor(props) {
+    super(props);
+
+    let theme = 'dark';
+    try {
+      theme = JSON.parse(localStorage.getItem('theme'));
+    } catch (err) {
+      console.log(err);
+    }
+
+    this.state = {
+      theme,
+    };
+  }
 
   handleToggleTheme = () => {
     this.setState(
