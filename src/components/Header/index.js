@@ -7,7 +7,7 @@ export default function Header({ onToggleTheme, selectedTheme }) {
   const history = useHistory();
 
   function handleNavigate() {
-    history.push('/posts');
+    history.push('/');
   }
 
   return (
@@ -17,7 +17,7 @@ export default function Header({ onToggleTheme, selectedTheme }) {
         {selectedTheme === 'dark' ? '🌞' : '🌛'}
       </button>
       <button onClick={handleNavigate} style={{ color: '#fff' }}>
-        Navegar
+        Voltar para a home
       </button>
     </Container>
   );
