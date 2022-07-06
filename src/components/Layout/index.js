@@ -16,6 +16,7 @@ export default function Layout({ onToggleTheme, selectedTheme }) {
       <Nav>
         <Link to='/'>Home</Link>
         <Link to='/posts'>Posts</Link>
+        <Link to='/posts/519651951951'>Post</Link>
       </Nav>
 
       <Routes />
