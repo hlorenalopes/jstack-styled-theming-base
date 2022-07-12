@@ -13,12 +13,14 @@ export default function Header({ onToggleTheme, selectedTheme }) {
   return (
     <Container>
       <h1>JStack's Blog</h1>
-      <button type='button' onClick={onToggleTheme}>
-        {selectedTheme === 'dark' ? '🌞' : '🌛'}
-      </button>
-      <button onClick={handleNavigate} style={{ color: '#fff' }}>
-        Voltar para a home
-      </button>
+      <div>
+        <button onClick={handleNavigate} style={{ color: '#fff' }}>
+          Voltar para a home
+        </button>
+        <button type='button' onClick={onToggleTheme}>
+          {selectedTheme === 'dark' ? '🌞' : '🌛'}
+        </button>
+      </div>
     </Container>
   );
 }
